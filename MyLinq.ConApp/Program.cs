@@ -12,7 +12,7 @@ namespace MyLinq.ConApp
 			var cities = new string[] { "London", "Vienna", "Paris", "Linz", "Brussels", "Wilhering" };
 			var query = cities.Filter(c => c.Contains("i"))
 							  .Filter(c => c.Length > 5)
-							  .Order((t1,t2) => t1.CompareTo(t2));
+							  .SortBy(i => i);
 
 			foreach (var item in query)
 			{

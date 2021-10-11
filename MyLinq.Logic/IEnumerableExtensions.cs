@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace MyLinq.Logic
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public static class IEnumerableExtensions
 	{
 		/// <summary>
@@ -224,11 +227,14 @@ namespace MyLinq.Logic
 			return source;
 		}
 
-		private class SortByComparer<T, TKey> : IComparer<T> where TKey : IComparable
+		private class SortByComparer<T, TKey> : IComparer<T> 
+			where TKey : IComparable
 		{
 			private Func<T, TKey> OrderBy { get; }
 			public SortByComparer(Func<T, TKey> orderBy)
 			{
+				orderBy.CheckArgument(nameof(orderBy));
+
 				OrderBy = orderBy;
 			}
 			public int Compare(T x, T y)
@@ -244,7 +250,8 @@ namespace MyLinq.Logic
 		/// <param name="source">A sequence of values to order.</param>
 		/// <param name="orderBy">A function to extract a key from an element.</param>
 		/// <returns>An IEnumerable<T> whose elements are sorted according to a key.</returns>
-		public static IEnumerable<T> SortBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> orderBy) where TKey : IComparable
+		public static IEnumerable<T> SortBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> orderBy) 
+			where TKey : IComparable
 		{
 			source.CheckArgument(nameof(source));
 			orderBy.CheckArgument(nameof(orderBy));
