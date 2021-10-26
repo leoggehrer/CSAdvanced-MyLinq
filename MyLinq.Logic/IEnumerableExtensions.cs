@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace MyLinq.Logic
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	public static class IEnumerableExtensions
+    /// <summary>
+    /// The extensions for the IEnumerable <T> type are combined in this extension class.
+    /// </summary>
+    public static class IEnumerableExtensions
 	{
 		/// <summary>
 		/// Filters a sequence of values based on a predicate.
